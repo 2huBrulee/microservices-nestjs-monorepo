@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from '../services/app.service';
 
@@ -6,7 +7,7 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  getHello(): Observable<string[]> {
+    return this.appService.getProducts();
   }
 }

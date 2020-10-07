@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  rabbit:
+    image: rabbitmq:3-management
+    ports:
+      - 5672:5672
+      - 15672:15672
+    hostname: rmq
+
+  products:
+    build:
+      context: ./microservices/products
+      dockerfile: Dockerfile
+      args:
+        - NODE_ENV=development
+    environment:
+      - PORT=3000
+    ports:
+      - 3000:3000
+    tty: true
+    command: yarn start:prod
+
+  user:
+    build:
+      context: ./microservices/products
+      dockerfile: Dockerfile
+      args:
+        - NODE_ENV=development
+    environment:
+      - PORT=3000
+    ports:
+      - 3000:3000
+    tty: true
+    command: yarn start:prod
