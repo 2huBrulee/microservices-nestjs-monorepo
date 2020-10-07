@@ -1,0 +1,7 @@
+{
+    "extends": "apps/api/tsconfig.json",
+    "compilerOptions": {
+      "types": ["jest", "node"]
+    }
+  }
+  
